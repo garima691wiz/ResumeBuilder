@@ -35,17 +35,7 @@ const Template4 = () => {
     <div className="flex justify-center w-full min-h-full px-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
        {/* Container for the resume content */}
-      <div id="resume-container" style={{ color:'white',
-        fontSize:'16px',
-        fontFamily: 'La to, sans-serif', 
-        border: '5px solid #ccc', 
-        padding: '20px', 
-        margin: '20px',
-        whiteSpace: 'nowrap', 
-        overflow: 'hidden',  
-        textOverflow: 'ellipsis',
-        width:'600px', backgroundColor:'#004d40'
-      }}>
+       <div id="resume-container" className="bg-white p-4 m-4 border border-gray-300" style={{ fontSize: '14px', fontFamily: 'Lato, sans-serif', width: '100%', maxWidth: '600px' ,backgroundColor:'#004d40',color:'white',}}>
         <div> 
         {/*Personal Information */}
           <div className="flex justify-between bg-yellow-300">

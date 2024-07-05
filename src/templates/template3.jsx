@@ -33,17 +33,7 @@ const Template3 = () => {
   return (
     <div className="flex justify-center w-full min-h-full px-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
-      <div id="resume-container" style={{ 
-        fontSize:'16px',
-        fontFamily: 'Lato, sans-serif', 
-        border: '5px solid #ccc', 
-        padding: '20px', 
-        margin: '20px',
-        whiteSpace: 'nowrap', 
-        overflow: 'hidden',  
-        textOverflow: 'ellipsis',
-        width:'600px'
-      }}>
+      <div id="resume-container" className="bg-white p-4 m-4 border border-gray-300" style={{ fontSize: '14px', fontFamily: 'Lato, sans-serif', width: '100%', maxWidth: '600px' }}>
         <div> 
             {/* Profile section */}
           <div className="flex  justify-between " style={{ backgroundColor: '#ab47bc' }}>
@@ -55,7 +45,7 @@ const Template3 = () => {
                 style={{ width: 'auto', minWidth: '80px', maxWidth: '80px' }}
               />
             </div>
-            <div style={{ textAlign: 'center', backgroundColor: '#ce93d8', padding: '10px', borderRadius: '10px', maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', maxHeight:'80px', textOverflow: 'ellipsis',marginTop:'10px' }}>
+            <div style={{ textAlign: 'center', backgroundColor: '#ce93d8', padding: '10px', borderRadius: '10px', maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', maxHeight:'80px', textOverflow: 'ellipsis',marginTop:'2px',marginBottom:'2 px' }}>
               <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>
                 {information?.firstName} {information?.lastName}
               </h1>

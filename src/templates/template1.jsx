@@ -31,144 +31,105 @@ const Template1 = () => {
 
   return (
     <div className="flex justify-center w-full min-h-full px-2">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 "><div id="resume-container" style={{ 
-       fontSize: '14px',
-        fontFamily: 'Lato, sans-serif', 
-        border: '5px solid #ccc', 
-        padding: '10px', 
-        margin: '20px',
-        whiteSpace: 'nowrap', 
-        overflow: 'hidden',  
-        textOverflow: 'ellipsis',
-        width:'600px', 
-        
-      }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 "><div id="resume-container" className="bg-white p-4 m-4 border border-gray-300" style={{ fontSize: '14px', fontFamily: 'Lato, sans-serif', width: '100%', maxWidth: '600px' }}>
         <div> 
           {/* Name and Objective */}
-          <div className="flex  justify-between bg-gray-600 w-full min-h-full py-5 px-2">
-          <div style={{ maxWidth: '450px' }}>
-            <h1 style={{ fontSize: '26px',fontWeight: 'bold',color:'white' }}>
-            {information?.firstName} {information?.lastName}
-            </h1>
-            <hr className="h-2 bg-red-500  w-64" />
-            <p style={{
-              whiteSpace: 'pre-wrap',
-              fontSize: '14px',
-              fontStyle: 'italic',color:'white',
-              borderRadius: '10px',
-              padding: '10px',
-              flex: '2' 
-            }}>
-            {information?.objective}
-              </p>
+          <div className="flex flex-col items-center bg-gray-900 p-5 rounded-md">
+            <div className="flex items-center">
+              <img src={information?.profilePhoto} alt="Profile" className="w-20 h-20 rounded-full" />
+              <div className="ml-4 text-white">
+                <h1 className="text-xl font-bold text-white">{information?.firstName} {information?.lastName}</h1>
+                <hr className="border-b-2 border-red-500 my-2" />
+                <p className="italic">{information?.objective}</p>
+              </div>
             </div>
-              {/* Profile photo */}
-            <div style={{ textAlign: 'center',   borderRadius: '10px',maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',   }}>
-              <img 
-              src={information?.profilePhoto} 
-              alt="Profile" 
-              style={{ width: 'auto', minWidth: '80px', maxWidth: '80px' }} 
-              />
-            </div>
-            
-
           </div>
         <hr className="h-2 bg-red-500  w-full" />
 
        {/* Personal Information section */}
-          <div className='bg-red-500'>
-          <Person3Icon></Person3Icon><strong style={{fontSize:'16px',color: 'white'}}>Personal Information:</strong>
-          <hr className="h-1 bg-black  w-56" />
+          <div className='bg-red-600  py-4 mt-4 rounded-md text-white'>
+          <div className="flex items-center">
+              <Person3Icon />
+              <strong className="ml-2 text-black">Personal Information:</strong>
+            </div>
+          <hr className="h-1 bg-black  w-56 my-2" />
 
-          
-          <div style={{ flex: 1, maxWidth: '80%', marginRight: '50px', marginTop: '5px' ,fontsize: '14px'}}>
-          <div className="flex">
-   
-          <div className="skills-container" style={{marginLeft:'10px', display: 'flex', flexWrap: 'wrap' }}>  
+          <div className="flex flex-wrap">
+              <div className="w-full md:w-1/2 " style={{ fontSize: '12px',  }}>
                 <p><strong>City:</strong> {information?.city}</p>
                 <p><strong>State:</strong> {information?.state}</p>
-                <p style={{whiteSpace: 'pre-wrap', }} ><strong>Address:</strong> {information?.address}</p>
+                <p><strong>Address:</strong> {information?.address}</p>
               </div>
-               {/* Right column for email, phone */}
-                <div className="skills-container" style={{marginLeft: '180px',}} >    
+              <div className="w-full md:w-1/2 mt-4 md:mt-0"  style={{ fontSize: '12px', }}>
                 <p><strong>Email:</strong> {information?.email}</p>
                 <p><strong>Phone:</strong> {information?.phone}</p>
-                
               </div>
-            
             </div>
-          </div>
-          <hr style={{ margin: '10px', borderBottom: '1px solid black' }} />
           
-          <div className="flex flex-wrap">
-  {/* Education and Education section */}
-  <div style={{ flex: 1, minWidth: '250px', }}>
-  <div className="column" style={{ fontSize: '14px' }}>
-      <SchoolIcon></SchoolIcon>
-      <strong style={{ fontSize: '16px', color: 'white' }}>Education Information:</strong>
-      <hr className="h-1 bg-black w-56" />
-      <div className="container" style={{ display: 'flex', flexWrap: 'wrap',padding: '10px', }}>
-        {information?.education?.map((edu, index) => (
-          <div key={index}>
-            <p><strong>Type:</strong> {edu.type  }  <strong>  Degree:</strong> {edu.degree}</p>
-            <p><strong>University:</strong> {edu.university}</p>
-            <p><strong>Start Year:</strong> {edu.start}</p>
-            <p><strong>End Year:</strong> {edu.end}</p>
-            <hr className="my-2 border-t border-gray-400" />
-          </div>
-        ))}
-      </div>
-      </div>
-  </div>
+          <hr style={{ margin: '10px', borderBottom: '1px solid black' }} />
+          <div className="flex flex-col md:flex-row">
+            <div className="w-full md:w-1/2">
+              <div className="flex items-center">
+                <SchoolIcon />
+                <strong className="ml-2 text-black">Education Information:</strong>
+              </div>
+              <hr className="h-1 bg-black  w-56 my-2" />
 
-  {/* Right Column (Work Experience) */}
-  <div style={{ flex: 1, minWidth: '250px', }}>
-    <div className="column" style={{ fontSize: '14px' }}>
-      <WorkIcon></WorkIcon>
-      <strong style={{ fontSize: '16px', color: 'white' }}>Work Experience:</strong>
-      <hr className="h-1 bg-black w-56" />
-      <div className="container" style={{ display: 'flex', flexWrap: 'wrap',padding: '10px', }}>
-        {information?.workExperience?.map((exp, index) => (
-          <div key={index} >
-            <p><strong>Job Title:</strong> {exp.jobTitle}</p>
-            <p><strong>Organisation Name:</strong> {exp.organisationName}</p>
-            <p><strong>Start Year:</strong> {exp.startYear}</p>
-            <p><strong>End Year:</strong> {exp.endYear}</p>
-            <hr className="my-2 border-t border-gray-400" />
-        
+             
+              {information?.education?.map((edu, index) => (
+                <div key={index}  style={{ fontSize: '12px', }}>
+                  <p><strong>Type:</strong> {edu.type} <strong>Degree:</strong> {edu.degree}</p>
+                  <p><strong>University:</strong> {edu.university}</p>
+                  <p><strong>Start Year:</strong> {edu.start}</p>
+                  <p><strong>End Year:</strong> {edu.end}</p>
+                  <hr className="my-2 border-gray-400" />
+                </div>
+              ))}
+            </div>
+
+            <div className="w-full md:w-1/2 mt-4 md:mt-0 md:pl-4">
+              <div className="flex items-center">
+                <WorkIcon />
+                <strong className="ml-2 text-black">Work Experience:</strong>
+              </div>
+              <hr className="h-1 bg-black  w-56 my-2" />
+
+              {information?.workExperience?.map((exp, index) => (
+                <div key={index}  style={{ fontSize: '12px', }}>
+                  <p><strong>Job Title:</strong> {exp.jobTitle}</p>
+                  <p><strong>Organisation Name:</strong> {exp.organisationName}</p>
+                  <p><strong>Start Year:</strong> {exp.startYear}</p>
+                  <p><strong>End Year:</strong> {exp.endYear}</p>
+                  <hr className="my-2 border-gray-400" />
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
 
           <hr style={{ margin: '10px', borderBottom: '1px solid black' }} />
 
+          <div>
+            <div className="flex items-center">
+              <StarHalfIcon />
+              <strong className="ml-2 text-black">Key Skills:</strong>
+            </div>
+            <hr className="h-1 bg-black  w-56 my-2" />
 
-        <div>
-          <StarHalfIcon variant="contained"></StarHalfIcon><strong style={{fontSize:'16px',color: 'white'}}>Key Skills:</strong>
-          <hr className="h-1 bg-black  w-56" />
-
-   
-            <div className="skills-container" style={{ display: 'flex',marginLeft:'10px', flexWrap: 'wrap' }}>
-    {/* First column for skills */}
-              <div className="column" style={{ fontSize: '14px' }}>
-              <p><strong>Skill 1:</strong> {information.skill}</p>
-              <p><strong>Skill 2:</strong>        {information.skill1}</p>
-              <p><strong>Skill 3:</strong>        {information.skill2}</p>
-              <p><strong>Skill 4:</strong>        {information.skill3}</p>
-              
-
+            <div className="flex flex-wrap">
+              <div className="w-full md:w-1/2"  style={{ fontSize: '12px', }}>
+                <p><strong>Skill 1:</strong> {information.skill}</p>
+                <p><strong>Skill 2:</strong> {information.skill1}</p>
+                <p><strong>Skill 3:</strong> {information.skill2}</p>
+                <p><strong>Skill 4:</strong> {information.skill3}</p>
               </div>
-    {/* Second column for skills */}
-              <div className="column" style={{ fontSize: '14px',marginLeft:'200px' }}>
+              <div className="w-full md:w-1/2 "  style={{ fontSize: '12px', }}>
                 {information?.skills?.map((skill, index) => (
-               <p key={index}><strong>Skill {index+5}:</strong> {skill}</p>
-              ))}
-               </div>
+                  <p key={index}><strong>Skill {index + 5}:</strong> {skill}</p>
+                ))}
+              </div>
             </div>
           </div>
+       
 
         </div>
       </div>
