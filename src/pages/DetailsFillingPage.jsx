@@ -64,9 +64,9 @@ const DetailsFillingPage= () => {
       
         workExperience: Yup.array().of(
           Yup.object().shape({
-          jobTitle: Yup.string().min(3, 'Too short!').required('Job Title is required'),
-          organisationName: Yup.string().min(3, 'Too short!').required('Organisation Name is required'),
-          startYear: Yup.number()   .min(1900, 'Invalid start year').max(2050, 'Invalid end year').required('Start Year is required').positive('Must be a positive number').integer('Must be an integer'),
+          jobTitle: Yup.string().required('Job Title is required'),
+          organisationName: Yup.string().required('Organisation Name is required'),
+          startYear: Yup.number() .min(1900, 'Invalid start year').max(2050, 'Invalid end year').required('Start Year is required').positive('Must be a positive number').integer('Must be an integer'),
           endYear: Yup.number().min(1900, 'Invalid end year').max(2050, 'Invalid end year').required('End Year is required').positive('Must be a positive number').integer('Must be an integer').when('startYear1', (startYear, schema) => {
           return schema.min(startYear, 'End Year must be greater than Start Year');
         }),
@@ -92,9 +92,9 @@ const DetailsFillingPage= () => {
   }),
     
     Yup.object().shape({
-      skill: Yup.string().min(3, 'Too short!').required('Skill is required'),
-      skill1: Yup.string().min(3, 'Too short!').required('Skill is required'),
-      skill2: Yup.string().min(3, 'Too short!').required('Skill is required'),
+      skill: Yup.string().required('Skill is required'),
+      skill1: Yup.string().required('Skill is required'),
+      skill2: Yup.string().required('Skill is required'),
       skills: Yup.array()
         .of(Yup.string().min(3, 'Skill must be at least 3 characters long').required('Skill is required'))
         .min(1, 'At least one skill is required'),

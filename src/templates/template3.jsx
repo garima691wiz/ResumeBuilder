@@ -63,38 +63,40 @@ const Template3 = () => {
           borderBottom: '1px solid #333', }} />
 
        {/* Objective section */}  
-       <div className='flex justify-between'>
-  <Person3Icon />  
+       <div className="flex ">
+  <Person3Icon />
+
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-  <div style={{
-    maxWidth: '200px',
-    backgroundColor: '#ab47bc',
-    padding: '10px',
-    borderRadius: '10px',
-    maxHeight: '50px',
-    flex: '1',  
-    marginBottom: '10px' 
-  }}>
     <div style={{
-      width: '160px',
-      borderRadius: '10px'
+      maxWidth: '200px',
+      backgroundColor: '#ab47bc',
+      padding: '10px',
+      borderRadius: '10px',
+      maxHeight: '50px',
+      marginBottom: '10px'
     }}>
-      <strong>Objective</strong>
+      <div style={{ width: '160px', borderRadius: '10px' }}>
+        <strong style={{ marginBottom: '5px' }}>Objective</strong>
+      </div>
     </div>
+
+    <p style={{
+      whiteSpace: 'pre-wrap',
+      fontSize: '14px',
+      fontStyle: 'italic',
+      backgroundColor: '#ce93d8',
+      borderRadius: '10px',
+      padding: '10px',
+      flex: '2',
+      maxWidth: 'px', // Adjusted maxWidth to limit width
+      overflow: 'hidden', // Hide overflow content
+      textOverflow: 'ellipsis' // Show ellipsis for overflow
+    }}>
+      {information?.objective}
+    </p>
   </div>
-  <p style={{
-    whiteSpace: 'pre-wrap',
-    fontSize: '14px',
-    fontStyle: 'italic',
-    backgroundColor: '#ce93d8',
-    borderRadius: '10px',
-    padding: '10px',
-    flex: '2' 
-  }}>
-    {information?.objective}
-  </p>
 </div>
-</div>
+
 
           <hr style={{
           margin: '10px 0',
@@ -121,8 +123,9 @@ const Template3 = () => {
         }}>
         <strong >Education Information</strong>
         </div>
-        </div> <div style={{ whiteSpace: 'pre-wrap', fontSize: '14px', fontStyle: 'italic', backgroundColor: '#ce93d8' ,borderRadius: '10px',padding: '10px',
-    flex: '2' }}>
+        </div> 
+        <div style={{ whiteSpace: 'pre-wrap', fontSize: '14px', fontStyle: 'italic', backgroundColor: '#ce93d8' ,borderRadius: '10px',padding: '10px',
+        flex: '2' }}>
         
             
           {information?.education?.map((edu, index) => (

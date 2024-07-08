@@ -133,7 +133,7 @@ const Template1 = () => {
 
         </div>
       </div>
-      <hr className="h-10 bg-gray-600" />
+      <hr className="h-10 bg-gray-900" />
 
    
       </div>

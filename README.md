@@ -10,3 +10,7 @@ Currently, two official plugins are available:
 =======
 # ResumeBuilderAlmabetter
 >>>>>>> origin/main
+
+
+
+deployment link- https://668c22dcd475267a4f4f5d8b--dulcet-zabaione-5912e4.netlify.app/
