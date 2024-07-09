@@ -43,7 +43,7 @@ const Template4 = () => {
               <h1 style={{ fontSize: '20px', fontWeight: 'bold', color:'black' }}>
                 {information?.firstName} {information?.lastName}
               </h1>
-              <hr className="h-2 bg-black  w-56" />
+              <hr className="h-1 bg-black my-1 w-56" />
 
               <div style={{ fontSize: '14px', fontStyle: 'italic' ,color:'black'}}>
                   <p><strong>Email:</strong> {information?.email}</p>
@@ -58,71 +58,59 @@ const Template4 = () => {
               />
             </div>
           </div>
-          <hr className="h-2 bg-black  w-full border-b-2" />
+          <hr className="h-1 bg-black  w-full border-b-2" />
 
       {/*Objective */}  
-      <div className='py-2'>
+      <div >
         <Person3Icon variant="contained"></Person3Icon>       <strong>Objective</strong>
-        <hr className="h-1 bg-yellow-300  w-56" />
+        <hr className="h-1 bg-yellow-300  w-56 my-2" />
 
         <p style={{ whiteSpace: 'pre-wrap', maxWidth: '500px', fontSize: '14px', fontStyle: 'italic',color:'white',marginLeft:'30px' }}>{information?.objective}</p>
       </div> 
-
-      <hr style={{height:'2px',
-          margin: '10px 0',
-          border: 'none',  
-          borderBottom: '1px solid black',marginBottom:'5px', }} />
-          
+      <hr className="my-1 "  />
 
           {/* Education section */}
           <div>
                < SchoolIcon ></SchoolIcon>
                <strong>Education Information:<strong/></strong>
-               <hr className="h-1 bg-yellow-300  w-56" />
+               <hr className="h-1 bg-yellow-300  w-56 my-2" />
                   {information?.education?.map((edu, index) => (
                   <div key={index}>
                     <div style={{ fontSize: '14px', fontStyle: 'italic',marginLeft:'30px' }}>
-                    <p><strong>University:</strong> {edu.university} ({edu.start}-{edu.end})</p>
+                    <p><strong>University:</strong> {edu.university}        ({edu.start}-{edu.end})</p>
                      <p><strong>Type:</strong> {edu.type}   Degree: {edu.degree}</p>
-                  
+                      <hr className="my-1 w-60"  />
                     </div>
-                    <hr className="my-1"  />
+                    
                   </div>
                 ))}
               </div>
 
-          <hr style={{
-          margin: '10px 0',
-          border: 'none',  
-          borderBottom: '1px solid black',marginBottom:'10px',marginTop:'15px' }} />
-
+              <hr className="my-1 "  />
            {/* Work Experience section */}
          
           <div>
                 <WorkIcon></WorkIcon> <strong>Work Experience:</strong>
-                <hr className="h-1 bg-yellow-300  w-56" />
+                <hr className="h-1 bg-yellow-300  w-56 my-2" />
                 
                 {information?.workExperience?.map((exp, index) => (
                   <div key={index}>
                     <div style={{ fontSize: '14px', fontStyle: 'italic',marginLeft:'30px' }}>
                     <p><strong>Organisation Name:</strong>{exp.organisationName}    ({exp.startYear}-{exp.endYear})</p>
                     <p><strong>Job Title:</strong> {exp.jobTitle}</p>
-                    <hr className="my-1" />
+                    <hr className="my-1 w-60"  />
                     </div>
                   </div>
                 ))}
             </div>
 
-          <hr style={{
-          margin: '10px 0',
-          border: 'none',  
-          borderBottom: '1px solid black',marginBottom:'10px',marginTop:'15px' }} />
+            <hr className="my-1 "  />
 
            {/* Key Skills section */}
          
            <div style={{ fontSize: '14px', fontStyle: 'italic' }}>
                 < StarHalfIcon></StarHalfIcon> <strong>Key Skills:</strong>
-                <hr className="h-1 bg-yellow-300  w-56" />
+                <hr className="h-1 bg-yellow-300  w-56 my-2" />
                 <div style={{marginLeft:'30px'}}>
                 <p><strong>Skill 1:</strong> {information.skill}</p>
                 <p><strong>Skill 2:</strong> {information.skill1}</p>
@@ -134,7 +122,7 @@ const Template4 = () => {
                   <p key={index}><strong>Skill {index + 5}:</strong> {skill}</p>
                 ))}</div> 
               </div>
-          {/* Contact and Personal Information */}
+              <hr className="my-1 "  />
           
         </div>
       </div>

@@ -88,7 +88,7 @@ const Template3 = () => {
       borderRadius: '10px',
       padding: '10px',
       flex: '2',
-      maxWidth: 'px', // Adjusted maxWidth to limit width
+      maxWidth: '280px', // Adjusted maxWidth to limit width
       overflow: 'hidden', // Hide overflow content
       textOverflow: 'ellipsis' // Show ellipsis for overflow
     }}>
@@ -155,16 +155,18 @@ const Template3 = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                          
                 <div style={{ maxWidth: '200px', backgroundColor: '#ab47bc',padding: '10px',borderRadius: '10px',maxHeight:'50px' }}>
+
                 <div style={{  whiteSpace: 'pre-wrap', 
                    width: '180px',  borderRadius: '10px',justifyContent: 'space-between', }}>
                  <strong >Work Experience</strong>
                  </div>
                  </div>
-                <div style={{ whiteSpace: 'pre-wrap', flex: '2' , fontSize: '14px', fontStyle: 'italic', backgroundColor: '#ce93d8', borderRadius: '10px' }}>
+                <div style={{ whiteSpace: 'pre-wrap', flex: '2' , fontSize: '14px', fontStyle: 'italic', backgroundColor: '#ce93d8',padding: '10px', borderRadius: '10px' }}>
                
                 {information?.workExperience?.map((exp, index) => (
-                  <div key={index}>
-                    <div style={{ fontSize: '14px', padding: '10px',fontStyle: 'italic',borderRadius: '10px', width:'270px' }}>
+                  <div key={index}
+                   style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' ,}}>
+                   <div style={{ fontSize: '14px', fontStyle: 'italic',width: '260px',  }}>
                     <p><strong>Organisation:</strong>{exp.organisationName}   
                      </p>
                      <p>({exp.startYear}-{exp.endYear})</p>

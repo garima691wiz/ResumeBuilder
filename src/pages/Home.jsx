@@ -18,10 +18,10 @@ const Home = () => {
   };
   
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 h-screen w-full py-32">
+    <div className="flex flex-wrap items-center justify-center gap-10  h-screen w-full py-30">
       
       {/* Resume Template 1 */}
-      <div className="w-80 h-100 group border-black border-2">
+      <div className="w-64 h-100 group border-black border-2">
         <div className="relative">
           <img src={Resume1} alt="resume1" />
           {/* Overlay for template actions */}
@@ -41,7 +41,7 @@ const Home = () => {
       </div>
 
       {/* Resume Template 2 */}
-      <div className="w-80 h-100 group border-black border-2">
+      <div className="w-64 h-100 group border-black border-2">
         <div className="relative overflow-hidden">
           <img src={Resume2} alt="resume2" />
           <div className="absolute h-full w-full bg-black/20 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
@@ -59,7 +59,7 @@ const Home = () => {
       </div>
 
       {/* Resume Template 3 */}
-      <div className="w-80 h-100 group border-black border-2">
+      <div className="w-64 h-100 group border-black border-2">
         <div className="relative overflow-hidden">
           <img src={Resume3} alt="resume3" />
           <div className="absolute h-full w-full bg-black/20 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
@@ -77,7 +77,7 @@ const Home = () => {
       </div>
 
       {/* Resume Template 4 */}
-      <div className="w-80 h-100 group border-black border-2">
+      <div className="w-64 h-100 group border-black border-2">
         <div className="relative overflow-hidden">
           <img src={Resume4} alt="resume4" />
           <div className="absolute h-full w-full bg-black/20 flex items-center justify-center -bottom-10 group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">

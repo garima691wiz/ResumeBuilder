@@ -13,6 +13,7 @@ const Navbar = () => {
   };
 
   return (
+  // Navigation bar container
     <nav className="bg-gray-800 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -51,6 +52,7 @@ const Navbar = () => {
               onClick={toggleNav}
               className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
             >
+              {/* Toggle icon based on navOpen state */}
               {navOpen ? (
                 <CloseIcon className="h-6 w-6" />
               ) : (
