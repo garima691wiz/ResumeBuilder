@@ -18,7 +18,7 @@ const Home = () => {
   };
   
   return (
-    <div className="flex flex-wrap items-center justify-center gap-10  h-screen w-full py-30">
+    <div className="flex flex-wrap items-center justify-center gap-10  h-screen w-full py-10 ">
       
       {/* Resume Template 1 */}
       <div className="w-64 h-100 group border-black border-2">

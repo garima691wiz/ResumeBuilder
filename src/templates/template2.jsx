@@ -30,8 +30,7 @@ const Template2 = () => {
   return (
     <div className="flex justify-center w-full min-h-full px-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
-        {/* Resume Content */}
-        <div id="resume-container" className="bg-white p-4 m-4 border border-gray-300" style={{ fontSize: '14px', fontFamily: 'Lato, sans-serif', width: '100%', maxWidth: '600px' }}>
+      <div id="resume-container" className="bg-white p-4 m-4 border border-gray-300" style={{ fontSize: '14px', fontFamily: 'Lato, sans-serif', width: '100%', maxWidth: '600px' }}>
           {/* Name and Objective */}
           <div className="flex flex-col items-center bg-gray-900 p-5 rounded-md">
             <div className="flex items-center">
@@ -114,13 +113,11 @@ const Template2 = () => {
             <div className="flex flex-wrap">
               <div className="w-full md:w-1/2">
                 <p><strong>Skill 1:</strong> {information.skill}</p>
-                <p><strong>Skill 2:</strong> {information.skill1}</p>
-                <p><strong>Skill 3:</strong> {information.skill2}</p>
-                <p><strong>Skill 4:</strong> {information.skill3}</p>
+              
               </div>
               <div className="w-full md:w-1/2 mt-4 md:mt-0">
                 {information?.skills?.map((skill, index) => (
-                  <p key={index}><strong>Skill {index + 5}:</strong> {skill}</p>
+                  <p key={index}><strong>Skill {index + 1}:</strong> {skill}</p>
                 ))}
               </div>
             </div>

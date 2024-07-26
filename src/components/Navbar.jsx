@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
   // Navigation bar container
-    <nav className="bg-gray-800 shadow-lg">
+    <nav className="bg-black shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -24,7 +24,7 @@ const Navbar = () => {
 
           {/* Desktop menu */}
           <div className="hidden sm:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="text-white ml-10 flex items-baseline space-x-4">
               <Link
                 to="/"
                 className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
@@ -50,7 +50,7 @@ const Navbar = () => {
           <div className="-mr-2 flex sm:hidden">
             <button
               onClick={toggleNav}
-              className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+              className="text-white hover:text-white focus:outline-none focus:text-white"
             >
               {/* Toggle icon based on navOpen state */}
               {navOpen ? (
@@ -64,7 +64,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile navigation menu */}
-      <div className={`${navOpen ? "block" : "hidden"} sm:hidden bg-gray-800`}>
+      <div className={`${navOpen ? "block" : "hidden"} sm:hidden bg-black`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
             to="/"

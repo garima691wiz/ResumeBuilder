@@ -45,13 +45,13 @@ const Template3 = () => {
                 style={{ width: 'auto', minWidth: '80px', maxWidth: '80px' }}
               />
             </div>
-            <div style={{ textAlign: 'center', backgroundColor: '#ce93d8', padding: '10px', borderRadius: '10px', maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', maxHeight:'80px', textOverflow: 'ellipsis',marginTop:'2px',marginBottom:'2 px' }}>
+            <div style={{ textAlign: 'center', backgroundColor: '#ce93d8',  borderRadius: '10px', maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', maxHeight:'80px', textOverflow: 'ellipsis',marginTop:'6px',marginBottom:'6 px' }}>
               <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>
                 {information?.firstName} {information?.lastName}
               </h1>
               <div style={{ fontSize: '14px', fontStyle: 'italic' }}>
-                  <p><strong>Email:</strong> {information?.email}</p>
-                  <p><strong>Phone:</strong> {information?.phone}</p>
+                  <p><strong>Email :</strong> {information?.email}</p>
+                  <p><strong>Phone :</strong> {information?.phone}</p>
                 </div>
             </div>
             </div>
@@ -121,7 +121,7 @@ const Template3 = () => {
           width: '180px',
           borderRadius: '10px',justifyContent: 'space-between',
         }}>
-        <strong >Education Information</strong>
+        <strong >Education  Information</strong>
         </div>
         </div> 
         <div style={{ whiteSpace: 'pre-wrap', fontSize: '14px', fontStyle: 'italic', backgroundColor: '#ce93d8' ,borderRadius: '10px',padding: '10px',
@@ -131,10 +131,10 @@ const Template3 = () => {
           {information?.education?.map((edu, index) => (
           <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' ,}}>
             <div style={{ fontSize: '14px', fontStyle: 'italic',width: '260px',  }}>
-              <p><strong>University:</strong> {edu.university} </p>
-              <p>({edu.start}-{edu.end})</p>
-              <p><strong>Type:</strong>{edu.type}   
-              <strong> Degree:</strong> {edu.degree}</p>
+              <p><strong>University : </strong> {edu.university} </p>
+              <p>({edu.start }-{ edu.end })</p>
+              <p><strong>Type : </strong>{edu.type}   
+                <strong> Degree : </strong> {edu.degree}</p>
             <hr className="my-1" />
             </div>
             
@@ -167,10 +167,10 @@ const Template3 = () => {
                   <div key={index}
                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' ,}}>
                    <div style={{ fontSize: '14px', fontStyle: 'italic',width: '260px',  }}>
-                    <p><strong>Organisation:</strong>{exp.organisationName}   
+                    <p><strong>Organisation :</strong>{exp.organisationName}   
                      </p>
-                     <p>({exp.startYear}-{exp.endYear})</p>
-                    <p><strong>Job Title:</strong> {exp.jobTitle}</p>
+                     <p>  ({exp.startYear} - {exp.endYear })</p>
+                    <p><strong>Job Title :</strong> {exp.jobTitle}</p>
                     
                     
                     <hr className="my-1" />
@@ -200,13 +200,9 @@ const Template3 = () => {
               <div style={{ whiteSpace: 'pre-wrap', padding: '10px',flex: '2' , fontSize: '14px', fontStyle: 'italic', backgroundColor: '#ce93d8', borderRadius: '10px' }}>
                
                 <p><strong>Skill 1:</strong> {information.skill}</p>
-                <p><strong>Skill 2:</strong> {information.skill1}</p>
-                <p><strong>Skill 3:</strong> {information.skill2}</p>
-                <p><strong>Skill 4:</strong> {information.skill3}</p>
-                
              
                 {information?.skills?.map((skill, index) => (
-                  <p key={index}><strong>Skill {index + 5}:</strong> {skill}</p>
+                  <p key={index}><strong>Skill {index + 1}:</strong> {skill}</p>
                 ))}
                
                

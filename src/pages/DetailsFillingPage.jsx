@@ -43,8 +43,7 @@ const DetailsFillingPage= () => {
     },
     { 
       skill: '', 
-      skill1: '', 
-      skill2: '',
+     
       skills: []
     },
   ];
@@ -93,10 +92,8 @@ const DetailsFillingPage= () => {
     
     Yup.object().shape({
       skill: Yup.string().required('Skill is required'),
-      skill1: Yup.string().required('Skill is required'),
-      skill2: Yup.string().required('Skill is required'),
       skills: Yup.array()
-        .of(Yup.string().min(3, 'Skill must be at least 3 characters long').required('Skill is required'))
+        .of(Yup.string().required('Skill is required'))
         .min(1, 'At least one skill is required'),
     }),
   ];
@@ -116,9 +113,11 @@ const DetailsFillingPage= () => {
     );
   };
  // Function to handle moving to the next step in the form
-  const handleNextStep = () => {
+ const handleNextStep = () => {
+ 
     setStep(step + 1);
-  };
+ 
+};
    // Function to handle moving to the previous step in the form
   const handlePreviousStep = () => {
     setStep(step - 1);
@@ -171,22 +170,21 @@ const DetailsFillingPage= () => {
                   )}
                   {step < validationSchema.length - 1 && (
                     <button
-                      className="flex flex-col bg-white text-blue-500 py-2 px-8 rounded-md border border-blue-500 hover:bg-blue-800 focus:outline-black focus:ring focus:border-blue-300"
-                      type="button"
-                      onClick={handleNextStep}
-                      disabled={!isValid}
-                    >
-                      Next
-                    </button>
-                  )}
-                 
-
-                  {step === validationSchema.length - 1 && (
-                    <button 
-                      className="text-white bg-green-500 px-4 py-1 ring-green-900 ring-1 rounded-md"
-                      type="submit" 
-                      disabled={!isValid || isSubmitting}
-                    >
+                    className="flex flex-col bg-white text-blue-500 py-2 px-8 rounded-md border border-blue-500 hover:bg-blue-800 focus:outline-black focus:ring focus:border-blue-300"
+                    type="button"
+                    onClick={handleNextStep}
+                    disabled={!isValid} // Disable next if form is invalid
+                  >
+                    Next
+                  </button>
+                )}
+  
+                {step === validationSchema.length - 1 && (
+                  <button
+                    className="text-white bg-green-500 px-4 py-1 ring-green-900 ring-1 rounded-md"
+                    type="submit"
+                    disabled={!isValid || isSubmitting} // Disable submit if form is invalid or submitting
+                  >
                       Submit
                     </button>
                     

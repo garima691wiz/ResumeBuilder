@@ -113,13 +113,9 @@ const Template4 = () => {
                 <hr className="h-1 bg-yellow-300  w-56 my-2" />
                 <div style={{marginLeft:'30px'}}>
                 <p><strong>Skill 1:</strong> {information.skill}</p>
-                <p><strong>Skill 2:</strong> {information.skill1}</p>
-                <p><strong>Skill 3:</strong> {information.skill2}</p>
-                <p><strong>Skill 4:</strong> {information.skill3}</p>
-           
              
                 {information?.skills?.map((skill, index) => (
-                  <p key={index}><strong>Skill {index + 5}:</strong> {skill}</p>
+                  <p key={index}><strong>Skill {index + 1 }:</strong> {skill}</p>
                 ))}</div> 
               </div>
               <hr className="my-1 "  />
