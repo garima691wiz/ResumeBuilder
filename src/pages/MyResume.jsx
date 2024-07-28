@@ -30,7 +30,7 @@ const MyResume = () => {
   return (
     <Formik initialValues={{ information}} onSubmit={values => console.log(values)}>
       {({ handleSubmit }) => (
-        <form onSubmit={handleSubmit} className="flex justify-center w-full min-h-full py-32 px-2">
+        <form onSubmit={handleSubmit} className="flex justify-center w-full min-h-full py-10 px-2">
           {renderTemplate()}{/* Render selected template component */}
           </form>
         

@@ -14,7 +14,7 @@ In this project we can make resume by taking user inputs
 
 # Deployment link
 * Click here to visit the live website 
-  link- https://668c22dcd475267a4f4f5d8b--dulcet-zabaione-5912e4.netlify.app/
+  link-https://abresumebuilder.netlify.app
 
 # Features
 * Select template
