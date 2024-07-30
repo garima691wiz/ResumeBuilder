@@ -72,9 +72,9 @@ const Template1 = () => {
             <div className="w-full md:w-1/2">
               <div className="flex items-center">
                 <SchoolIcon />
-                <strong className="ml-2 text-black">Education Information:</strong>
+                <strong className="ml-2 text-black">EducationInformation:</strong>
               </div>
-              <hr className="h-1 bg-black  w-56 my-2" />
+              <hr className="h-1 bg-black  w-40 my-2 mx-6" />
 
               <div className='ml-4'>
               {information?.education?.map((edu, index) => (
@@ -83,7 +83,7 @@ const Template1 = () => {
                   <p><strong>University:</strong> {edu.university}</p>
                   <p><strong>Start Year:</strong> {edu.start}</p>
                   <p><strong>End Year:</strong> {edu.end}</p>
-                  <hr className="my-2 border-gray-400 w-28" />
+                  <hr className="my-2 border-gray-400 w-24" />
                 </div>
               ))}
             </div>
@@ -92,9 +92,9 @@ const Template1 = () => {
             <div className="w-full md:w-1/2 mt-4 md:mt-0 md:pl-4">
               <div className="flex items-center">
                 <WorkIcon />
-                <strong className="ml-2 text-black">Work Experience:</strong>
+                <strong className="ml-2 text-black">WorkExperience:</strong>
               </div>
-              <hr className="h-1 bg-black  w-56 my-2" />
+              <hr className="h-1 bg-black  w-32 my-2 mx-6" />
               <div className='ml-4'>
               {information?.workExperience?.map((exp, index) => (
                 <div key={index}  style={{ fontSize: '12px',  }}>
@@ -102,7 +102,7 @@ const Template1 = () => {
                   <p><strong>Organisation:</strong> {exp.organisationName}</p>
                   <p><strong>Start Year:</strong> {exp.startYear}</p>
                   <p><strong>End Year:</strong> {exp.endYear}</p>
-                  <hr className="my-2 border-gray-400  w-28" />
+                  <hr className="my-2 border-gray-400  w-24" />
                 </div>
               ))}
             </div>

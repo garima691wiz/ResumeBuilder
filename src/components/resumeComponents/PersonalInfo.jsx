@@ -85,7 +85,7 @@ const PersonalInfo = () => {
             label="Objective"
             name="objective"
             type="text"
-            placeholder=""
+            placeholder="Enter Objective"
           />
         </div>
       </div>
