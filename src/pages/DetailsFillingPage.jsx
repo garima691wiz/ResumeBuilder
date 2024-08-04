@@ -15,6 +15,8 @@ import Template5 from '../templates/template5';
 import { useSelector, useDispatch } from 'react-redux';
 import { addinformation } from "../store/slice/slice4";
 
+
+
 const DetailsFillingPage = () => {
   const dispatch = useDispatch();
   const [step, setStep] = useState(0);// To track the current step in the multi-step form
@@ -91,6 +93,7 @@ const DetailsFillingPage = () => {
 
   // Handle form submission
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    
     localStorage.setItem('resumeData', JSON.stringify(values)); // Save the form values to local storage
     dispatch(addinformation(values)); // Dispatch form values to Redux store
     console.log(values); // Log form values for debugging
@@ -99,7 +102,9 @@ const DetailsFillingPage = () => {
     setSubmitted(true); // Mark the form as submitted
     resetForm(); // Reset form fields
   };
-
+   
+  
+ 
   // Handle moving to the next step in the form
   const handleNextStep = (validateForm, setErrors, setTouched) => {
     validateForm().then((errors) => {
@@ -144,7 +149,7 @@ const DetailsFillingPage = () => {
             })()
           ) : (
             <div className="flex flex-col w-full px-4 h-fit sm:w-[635px] border-none rounded-md">
-              {step === 0 && <PersonalInfo />} {/* Render component based on current step */}y
+              {step === 0 && <PersonalInfo />} {/* Render component based on current step */}
               {step === 1 && <WorkExperience />}
               {step === 2 && <Education />}
               {step === 3 && <KeySkills />}
