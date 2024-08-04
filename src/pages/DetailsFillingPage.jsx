@@ -16,29 +16,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addinformation } from "../store/slice/slice4";
 
 const DetailsFillingPage = () => {
-  // Redux dispatch function to send actions to the store
   const dispatch = useDispatch();
-  
-  // State to keep track of the current step in the form
   const [step, setStep] = useState(0);
-  
-  // State to track if the form has been submitted
   const [submitted, setSubmitted] = useState(false);
-  
-  // Select the currently chosen template from the Redux store
   const selectedTemplate = useSelector((state) => state.template.selectedTemplate);
-  
-  // State to store form values after submission
   const [formValues, setFormValues] = useState(null);
 
-  // Initial values for each step in the form
   const initialValuesArray = [
     { firstName: '', lastName: '', email: '', phone: '', city: '', state: '', address: '', objective: '' },
     { workExperience: [{ jobTitle: '', organisationName: '', startYear: '', endYear: '' }] },
     { education: [{ type: '', university: '', degree: '', start: '', end: '' }] },
     { skill: '', skills: [] },
   ];
-  // Validation schema for each step using Yup
+
   const validationSchema = [
     Yup.object().shape({
       firstName: Yup.string().required('First name is required'),
@@ -69,7 +59,7 @@ const DetailsFillingPage = () => {
             .integer('Must be an integer')
             .when('startYear', (startYear, schema) => schema.min(startYear, 'End Year must be greater than Start Year')),
         })
-      )
+      ).min(1, 'At least one work experience entry is required'),
     }),
     Yup.object().shape({
       education: Yup.array().of(
@@ -87,7 +77,7 @@ const DetailsFillingPage = () => {
             .integer('Must be an integer')
             .when('start', (startYear, schema) => schema.min(startYear, 'End Year must be greater than Start Year')),
         })
-      )
+      ).min(1, 'At least one education entry is required'),
     }),
     Yup.object().shape({
       skill: Yup.string().required('Skill is required'),
@@ -96,59 +86,41 @@ const DetailsFillingPage = () => {
         .min(1, 'At least one skill is required'),
     }),
   ];
- // Handle form submission
-  const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    
 
-     // Save the form values to local storage
-   localStorage.setItem('resumeData', JSON.stringify(values));
-   
-     // Dispatch an action to add the information to the Redux store
-   dispatch(addinformation(values));
-     // Set the form values in the state
-     setFormValues(values);
-    console.log('Form values on submit:',values);
-     // Mark the form as submitted
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    localStorage.setItem('resumeData', JSON.stringify(values));
+    dispatch(addinformation(values));
+    setFormValues(values);
     setSubmitting(false);
     setSubmitted(true);
-    // Reset the form
     resetForm();
   };
 
-  
-
-  // Handle moving to the next step in the form
   const handleNextStep = (validateForm, setErrors, setTouched) => {
-    // Validate the current step's form data
     validateForm().then((errors) => {
       if (Object.keys(errors).length === 0) {
-        // If no errors, move to the next step
         setStep(step + 1);
       } else {
-        // If there are errors, set the errors and mark the fields as touched
         setErrors(errors);
         setTouched(Object.keys(errors).reduce((acc, key) => ({ ...acc, [key]: true }), {}));
       }
     });
   };
 
-   // Handle moving to the previous step in the form
   const handlePreviousStep = () => {
     setStep(step - 1);
   };
 
   return (
     <Formik
-    initialValues={initialValuesArray[step]} // Set initial values for the current step
-    validationSchema={validationSchema[step]} // Set validation schema for the current step
-    onSubmit={handleSubmit} // Set form submission handler
+      initialValues={initialValuesArray[step]}
+      validationSchema={validationSchema[step]}
+      onSubmit={handleSubmit}
     >
-      {({ validateForm, setErrors, setTouched, isSubmitting, isValid }) => (
+      {({ validateForm, setErrors, setTouched, isSubmitting, isValid, values }) => (
         <Form className="flex justify-center w-full min-h-full py-20 px-2">
-          {!submitted && <Sidebar step={step} setStep={setStep} />}{/* Sidebar component */}
+          {!submitted && <Sidebar step={step} setStep={setStep} />}
           {submitted ? (
-             // Render the selected template based on the user's choice
-           
             (() => {
               switch (selectedTemplate) {
                 case 1:
@@ -164,41 +136,37 @@ const DetailsFillingPage = () => {
               }
             })()
           ) : (
-            // Render the form steps
-            
             <div className="flex flex-col w-full px-4 h-fit sm:w-[635px] border-none rounded-md">
               {step === 0 && <PersonalInfo />}
               {step === 1 && <WorkExperience />}
               {step === 2 && <Education />}
               {step === 3 && <KeySkills />}
               {step === 4 && <MyResume />}
-             
-              <div className="flex flex-wrap mt-0 justify-end gap-4 mb-4">
+
+              <div className="flex flex-wrap mt-4 justify-end gap-4 mb-4">
                 {step > 0 && (
-                  // Previous button to go to the previous step
                   <button
-                    className="flex flex-col bg-white text-blue-500 py-2 px-8 rounded-md border border-blue-500 hover:bg-blue-800 focus:outline-black focus:ring focus:border-blue-300"
+                    className="bg-white text-blue-500 py-2 px-8 rounded-md border border-blue-500 hover:bg-blue-800 focus:outline-black focus:ring focus:border-blue-300"
                     type="button"
                     onClick={handlePreviousStep}
                   >
                     Previous
                   </button>
                 )}
-                {step < validationSchema.length - 1 && (
-                   // Next button to go to the next step
-                 <button
-                    className="flex flex-col bg-white text-blue-500 py-2 px-8 rounded-md border border-blue-500 hover:bg-blue-800 focus:outline-black focus:ring focus:border-blue-300"
+                {step < initialValuesArray.length - 1 && (
+                  <button
+                    className="bg-white text-blue-500 py-2 px-8 rounded-md border border-blue-500 hover:bg-blue-800 focus:outline-black focus:ring focus:border-blue-300"
                     type="button"
                     onClick={() => handleNextStep(validateForm, setErrors, setTouched)}
                   >
                     Next
                   </button>
                 )}
-                {step === validationSchema.length - 1 && (
+                {step === initialValuesArray.length - 1 && (
                   <button
                     className="text-white bg-green-500 px-4 py-1 ring-green-900 ring-1 rounded-md"
                     type="submit"
-                    disabled={!isValid || isSubmitting}
+                    disabled={isSubmitting || !isValid || (values.education?.length || 0) < 1 || (values.workExperience?.length || 0) < 1}
                   >
                     Submit
                   </button>
