@@ -98,19 +98,24 @@ const DetailsFillingPage = () => {
   ];
  // Handle form submission
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    
+
      // Save the form values to local storage
    localStorage.setItem('resumeData', JSON.stringify(values));
+   
      // Dispatch an action to add the information to the Redux store
    dispatch(addinformation(values));
      // Set the form values in the state
      setFormValues(values);
-    
+    console.log('Form values on submit:',values);
      // Mark the form as submitted
     setSubmitting(false);
     setSubmitted(true);
     // Reset the form
     resetForm();
   };
+
+  
 
   // Handle moving to the next step in the form
   const handleNextStep = (validateForm, setErrors, setTouched) => {
