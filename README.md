@@ -14,7 +14,7 @@ In this project we can make resume by taking user inputs
 
 # Deployment link
 * Click here to visit the live website 
-https://resumebuilder-almbet.netlify.app
+https://resumebuilder-almabetter.netlify.app
 
 # Features
 * Select template
