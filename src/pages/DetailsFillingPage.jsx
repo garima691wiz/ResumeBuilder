@@ -17,11 +17,12 @@ import { addinformation } from "../store/slice/slice4";
 
 const DetailsFillingPage = () => {
   const dispatch = useDispatch();
-  const [step, setStep] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
-  const selectedTemplate = useSelector((state) => state.template.selectedTemplate);
-  const [formValues, setFormValues] = useState(null);
+  const [step, setStep] = useState(0);// To track the current step in the multi-step form
+  const [submitted, setSubmitted] = useState(false); // To determine if the form has been submitted
+  const selectedTemplate = useSelector((state) => state.template.selectedTemplate); // To get the selected resume template
+  const [formValues, setFormValues] = useState(null); // To store form values on submission
 
+  // Initial values for each step of the form
   const initialValuesArray = [
     { firstName: '', lastName: '', email: '', phone: '', city: '', state: '', address: '', objective: '' },
     { workExperience: [{ jobTitle: '', organisationName: '', startYear: '', endYear: '' }] },
@@ -29,6 +30,7 @@ const DetailsFillingPage = () => {
     { skill: '', skills: [] },
   ];
 
+   // Validation schema for each step of the form
   const validationSchema = [
     Yup.object().shape({
       firstName: Yup.string().required('First name is required'),
@@ -87,40 +89,45 @@ const DetailsFillingPage = () => {
     }),
   ];
 
+  // Handle form submission
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    localStorage.setItem('resumeData', JSON.stringify(values));
-    dispatch(addinformation(values));
-    setFormValues(values);
-    setSubmitting(false);
-    setSubmitted(true);
-    resetForm();
+    localStorage.setItem('resumeData', JSON.stringify(values)); // Save the form values to local storage
+    dispatch(addinformation(values)); // Dispatch form values to Redux store
+    console.log(values); // Log form values for debugging
+    setFormValues(values); // Store form values in state
+    setSubmitting(false); // Set submitting state to false
+    setSubmitted(true); // Mark the form as submitted
+    resetForm(); // Reset form fields
   };
 
+  // Handle moving to the next step in the form
   const handleNextStep = (validateForm, setErrors, setTouched) => {
     validateForm().then((errors) => {
       if (Object.keys(errors).length === 0) {
-        setStep(step + 1);
+        setStep(step + 1);// Move to the next step
       } else {
-        setErrors(errors);
-        setTouched(Object.keys(errors).reduce((acc, key) => ({ ...acc, [key]: true }), {}));
+        setErrors(errors); // Set validation errors
+        setTouched(Object.keys(errors).reduce((acc, key) => ({ ...acc, [key]: true }), {}));// Mark errors as touched
       }
     });
   };
 
+   // Handle moving to the previous step in the form
   const handlePreviousStep = () => {
     setStep(step - 1);
   };
 
   return (
     <Formik
-      initialValues={initialValuesArray[step]}
-      validationSchema={validationSchema[step]}
-      onSubmit={handleSubmit}
+    initialValues={initialValuesArray[step]} // Set initial values based on current step
+    validationSchema={validationSchema[step]} // Set validation schema based on current step
+    onSubmit={handleSubmit} // Set submit handler
     >
       {({ validateForm, setErrors, setTouched, isSubmitting, isValid, values }) => (
         <Form className="flex justify-center w-full min-h-full py-20 px-2">
-          {!submitted && <Sidebar step={step} setStep={setStep} />}
+          {!submitted && <Sidebar step={step} setStep={setStep} />}{/* Show sidebar unless form is submitted */}
           {submitted ? (
+                // Display resume based on selected template
             (() => {
               switch (selectedTemplate) {
                 case 1:
@@ -137,7 +144,7 @@ const DetailsFillingPage = () => {
             })()
           ) : (
             <div className="flex flex-col w-full px-4 h-fit sm:w-[635px] border-none rounded-md">
-              {step === 0 && <PersonalInfo />}
+              {step === 0 && <PersonalInfo />} {/* Render component based on current step */}y
               {step === 1 && <WorkExperience />}
               {step === 2 && <Education />}
               {step === 3 && <KeySkills />}
